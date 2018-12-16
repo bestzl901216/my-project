@@ -17,6 +17,7 @@
 </template>
 
 <script>
+import api from '@/api'
 export default {
   name: 'Login',
   data () {
@@ -41,7 +42,7 @@ export default {
     onSubmit () {
       this.$refs['form'].validate((valid) => {
         if (valid) {
-          // this.$http.post('http://jsonplaceholder.typicode.com/todos', this.form)
+          this.$http.put(api.account.login, this.form)
           this.$router.push('/goods')
         } else {
           console.log('error submit!!')
