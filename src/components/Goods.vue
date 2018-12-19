@@ -69,7 +69,7 @@ export default {
   methods: {
     addGoods (data) {
       console.info('新增商品')
-      this.$http.put(api.goods.creat, data)
+      this.$http.post(api.goods.creat, data)
     },
     handleSizeChange (data) {
       console.info('size变化')
