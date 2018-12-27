@@ -42,11 +42,16 @@ export default {
     onSubmit () {
       this.$refs['form'].validate((valid) => {
         if (valid) {
-          this.$http.put(api.account.login, this.form)
-          this.$router.push('/goods')
+          this.$http.put(api.account.login, this.form).then(res => {
+            console.info('res', res)
+            if (res.status === 200) {
+              this.$router.push('/goods')
+            } else {
+              this.$message.error('登陆失败')
+            }
+          })
         } else {
-          console.log('error submit!!')
-          return false
+          this.$message.warning('请检查账号密码格式')
         }
       })
     }
